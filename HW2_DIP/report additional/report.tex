@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+
+\usepackage{enumerate}
+\usepackage{rotating}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{subfigure}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{lastpage}
+
+\graphicspath{{./images/}}
+
+% for references
+\usepackage[pagebackref=false,colorlinks,linkcolor=blue,citecolor=magenta]{hyperref}
+\usepackage[nottoc]{tocbibind}
+\usepackage{fancyhdr}
+\setlength{\headsep}{25pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\lr{Digital Image Processing}}
+\rhead{تمرین امتیازی تمزین دوم}
+\cfoot{صفحه \thepage\ از \pageref{LastPage}}
+\lfoot{نیمسال مهر 00-99}
+\rfoot{حمیدرضا ابوئی مهریزی}
+
+
+% xepersian
+\usepackage[extrafootnotefeatures]{xepersian}
+\settextfont[Scale=1.4]{B Nazanin}
+\setlatintextfont{Times New Roman}
+
+\renewcommand{\labelitemi}{$\bullet$}
+
+\begin{document}
+	\doublespacing
+	\begin{titlepage}
+		\paragraph*{}
+		\centering
+			
+			
+			{\small به نام او}\\
+			\vspace{1cm}
+			\includegraphics[width=0.12\paperwidth]{aut.png}
+			\hspace{1cm}
+			\includegraphics[width=0.15\paperwidth]{DIP}
+			\hspace{1cm}
+			\includegraphics[width=0.12\paperwidth]{bme}\\
+			\vspace{2cm}
+			{\Huge پردازش تصویر}\\
+			\vspace{2cm}
+			{\large استاد : دکتر حامد آذرنوش}\\
+			\vspace{0.5cm}
+			{\small  دانشجو :‌ حمیدرضا ابوئی}\\
+			\vspace{0.5cm}
+			{\small شماره دانشجویی : 9733002}\\
+			\vspace{0.5cm}
+			{\small تمرین دوم}\\
+			\vfill
+			{\tiny نیمسال مهر 00-99}
+	\end{titlepage}
+	\thispagestyle{plain}
+	%\tableofcontents
+	\newpage
+	%\onehalfspacing
+	\doublespacing
+	\section*{سوال امتیازی تمرین دوم}
+		\paragraph{توضیحات تکمیلی روند کد}
+		روندی که بنده برای به دست آوردن یک کد به دست آوردم به این صورت بود که ابتدا با سرچ کردن انواع ترکیب های « بهبود معیار کنتراست » ، به چندین مقاله و سایت دست یافتم ؛اما هیچکدام ‍پاسخ مورد نیاز را در پی نداشت. بنابراین با تفکر و همچنین بررسی انواع شاخص های آماری و امتحان آن در تصاویر داده شده به نظر میرسد این فرمول که به آن متوسط قدر مطلق انحرافات گفته می‌شود معیار مناسبی برای بررسی میزان کنتراست تصویرمان است.
+		
+		\begin{equation}
+		\label{eq1}
+			absDerivation =\frac{ \sum\limits_{k=0}^{L-1} |z_k-mean|}{m\times n}
+		\end{equation} 
+		\begin{itemize}
+			\item
+		مزایا:\\
+		استفاده از یک نقطه‌ مرکزی برای سنجش انحرافات\\
+		نقش همه مقدارها در محاسبه پراکندگی\\
+		\item
+		معایب:\\
+		تاثیرپذیری از مقدارهای خیلی بزرگ و یا خیلی کوچک\\
+		وابستگی به واحد اندازه‌گیری داده‌ها\\
+		پیچیدگی در استفاده از روش‌های ریاضی\\
+		
+		\end{itemize}
+		\paragraph{ورودی برنامه}
+		دو تصویر زیر ورودی برنامه است \\
+		\vspace{0.5cm}\\
+		\includegraphics[width=17cm]{images/inputs/in.png}
+		\paragraph{خروجی برنامه}
+		دو عدد به عنوان متوسط قدر مطلق انحرافات\\
+		\noindent
+	\lr{1.7142857142857142}\\
+	\lr{1.5419501133786853}
+	
+	\raggedleft
+	
+\end{document}

@@ -1,0 +1,162 @@
+\documentclass[12pt]{article}
+
+\usepackage{enumerate}
+\usepackage{rotating}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{subfigure}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{lastpage}
+
+\graphicspath{{./images/}}
+
+% for references
+\usepackage[pagebackref=false,colorlinks,linkcolor=blue,citecolor=magenta]{hyperref}
+\usepackage[nottoc]{tocbibind}
+\usepackage{fancyhdr}
+\setlength{\headsep}{15pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\lr{Digital Image Processing}}
+\rhead{تمرین صفرم}
+\cfoot{صفحه \thepage\ از \pageref{LastPage}}
+\lfoot{نیمسال مهر 00-99}
+\rfoot{حمیدرضا ابوئی مهریزی}
+
+
+% xepersian
+\usepackage[extrafootnotefeatures]{xepersian}
+\settextfont[Scale=1.4]{B Nazanin}
+\setlatintextfont{Times New Roman}
+
+\renewcommand{\labelitemi}{$\bullet$}
+
+\begin{document}
+	\doublespacing
+	\begin{titlepage}
+		\paragraph*{}
+		\centering
+			
+			
+			{\small به نام او}\\
+			\vspace{1cm}
+			\includegraphics[width=0.12\paperwidth]{aut.png}
+			\hspace{1cm}
+			\includegraphics[width=0.15\paperwidth]{DIP}
+			\hspace{1cm}
+			\includegraphics[width=0.12\paperwidth]{bme}\\
+			\vspace{2cm}
+			{\Huge پردازش تصویر}\\
+			\vspace{2cm}
+			{\large استاد : دکتر حامد آذرنوش}\\
+			\vspace{0.5cm}
+			{\small  دانشجو :‌ حمیدرضا ابوئی}\\
+			\vspace{0.5cm}
+			{\small شماره دانشجویی : 9733002}
+			\vfill
+			{\tiny نیمسال مهر 00-99}
+	\end{titlepage}
+	\thispagestyle{plain}
+	\tableofcontents
+	\newpage
+	%\onehalfspacing
+	\doublespacing
+	\section{سوال اول}
+		\paragraph{توضیحات تکمیلی روند کد}
+			ابتدا یک متغیر برای جمع نهایی انتگرال تعریف میکنیم و مقدار آن را برابر $0$ قرار می دهیم سپس با استفاده از روش مستطيلي مقدار ها را با هم جمع ميكنيم و در نهايت بايد عدد نهايي را در طول گام ضرب كنيم تا جواب نهايي به آن بستگي نداشته باشد.
+			در حقيقت ما در محاسبه ي انتگرال از فرمول:
+			$\Sigma_{-3}^{4} sin(x^2) \Delta x $
+			استفاده مي‌کنیم که باید در 
+			$\Delta x$ 
+			در انتها ضرب کنیم .
+			
+		\paragraph{ورودی برنامه}
+		این برنامه ورودی ندارد
+		\paragraph{خروجی برنامه}
+	خروجی این برنامه 
+	$\int_{-3}^{4} sin(x^2) dx$
+	 با روش 
+	 $\Delta x = \frac{1}{200}$
+است.		
+که جواب آن
+ \lr{ 1.5224190753314377}
+  به دست می‌آید.
+  \newpage
+  \section{سوال دوم}
+  \paragraph{توضیحات تکمیلی روند کد}
+  اولا یک تابع با ورودی آن عدد می‌نویسیم و برای چک کردن این که این عدد اول است یا خیر، آن بخش پذیری آن عدد را به اعداد 2 تا قبل از رادیکال عدد ورودی چک میکنیم. اگر اول بود، همانجا یک متغیر را علامت گذاری کند و نیازی به چک کردن اعداد دیگر نیست (برای افزایش سرعت) . و برای نشان دادن صحت آن، ما اعداد 2 تا 50 را در یک حلقه بررسی کردیم 
+  \paragraph{ورودی برنامه}
+  ورودی تابع، همان عددی است که میخواهیم اول بودن یا نبودن آن را بررسی کنیم. 
+  \paragraph{خروجی برنامه}
+خروجی برنامه متغیر بولین 
+\lr{ True , Fulse }
+است. که می تواند مانند خروجی استفاده شده در برنامه ،یک جمله ی اخباری باشد :
+	\begin{flushleft}
+		\lr{ 5 is a prime number: True}
+	\end{flushleft}
+ 	\newpage
+	\section{سوال سوم}
+	\paragraph{توضیحات تکمیلی روند کد}
+	
+	همان‌گونه که می‌دانید، برای تغییر یک عدد در بازه ی 
+	$(min,max)$
+	به معادل همان عدد در بازه ی 
+	$(MIN,MAX)$
+	باید از فرمول 
+	$ out = \frac{(in - min)(MAX-MIN)}{max-min}+MIN$
+	استفاده کرد.
+	
+	بنابراین در تابع ، ابتدا به سراغ تک تک داده ها رفته و آن ها را	با این فرمول به بازه ی دلخواه منتقل می‌کنیم، در قسمت های بعدی، می‌توانیم برای یافتن کمینه و بیشینه آرایه، از 
+	\lr{numpy.amin , numpy.amax}
+	استفاده کنیم. 
+	برای تغییر 
+	\lr{dtype}
+	یک آرایه با ابعاد آرایه ورودی می‌سازیم و 
+	 \lr{dtype}
+	 آن را 
+	 \lr{uint8}
+	 قرار می‌دهیم. 
+	 
+	 در قسمت سوم هم برای ساخت ورودی از تابع 
+	 \lr{numpy.random.rand}
+	 استفاده میکنیم  و آن را در 5.12 ضرب و در انتها 2.3- می‌کنیم تا بازه ی مورد نیاز ساخته شود .
+	 سپس آن را به بازه ی 0 تا 255 برده و آن را با 
+	 \lr{matplotlib}
+	  و یا 
+	  \lr{open cv}
+	  نمایش می‌دهیم.
+	   
+	\paragraph{ورودی برنامه}
+	آرایه سه بعدی
+
+	\paragraph{خروجی برنامه}
+	در قسمت های 1 و 2 ، آرایه ی بین 0 تا 255 و در قسمت سوم هم خروجی به صورت زیر خواهد بود:\\
+	
+	\centering
+	\includegraphics[scale=2]{3-3.png}
+
+	\newpage
+	\raggedleft
+	\section{سوال چهارم}
+	
+	\paragraph{توضیحات تکمیلی روند کد}
+	در این قطعه کد، ابتدا ضریب جملات به صورت یک لیست به ما داده می‌شوند. در یک تابع، ما این لیست را گرفته و با استفاده از کتابخانه ی
+	\lr{sympy}
+عبارت جبری مرتبط با آن را می‌سازیم. 
+در تابعی دیگر، ما لیست ورودی که ضرایب یک چندجمله ای است را میگیریم و مشتق آن را به صورت دستی حساب می کنیم .
+سپس ما با استفاده از 
+\lr{lambdify }
+خروجی را به ازای ورودی حساب می‌کنیم و با استفاده از کتابخانه ی 
+\lr{matplotlib}
+آن را نمایش می‌دهیم و به آن خصوصیت های خاص می‌دهیم و تیتر و لیبل میزنیم .
+
+	\paragraph{ورودی برنامه}
+	ضرایب جملات چند جمله ای ورودی
+	\paragraph{خروجی برنامه}
+	یک نمودار حاوی شکل چندجمله ای و مشتق آن. برای مثال:
+	\includegraphics[scale=1]{4.png}
+\end{document}
